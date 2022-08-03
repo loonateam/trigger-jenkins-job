@@ -1,0 +1,34 @@
+name: 'trigger-jenkins-job'
+author: 'wanderbon'
+description: 'Github Action to trigger jenkins job'
+
+inputs:
+  githubToken:
+    description: GitHub Token
+    required: false
+    default: ${{ github.token }}
+  jenkinsJob:
+    description: Jenkins job name
+    required: false
+    default: "github-loona-build-feature"
+  jenkinsUser:
+    description: Jenkins user name
+    required: true
+  jenkinsToken:
+    description: Jenkins Secrets
+    required: true
+  jenkinsUrl:
+    description: URL to Jenkins
+    required: true
+  defaultBranch:
+    description: Name of default branch in repo
+    required: false
+    default: trunk
+
+outputs:
+  result:
+    description: '`success` or `failure` is set.'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
