@@ -21,8 +21,6 @@ const run = async (input: Input) => {
 
     const branch = context.payload.pull_request?.head?.ref ?? defaultBranch;
 
-    if (branch === defaultBranch) return;
-
     const jenkinsParams: JenkinsParams = {
       TARGET_BRANCH: branch,
       build_ios: true,
