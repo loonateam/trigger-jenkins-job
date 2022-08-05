@@ -24,7 +24,7 @@ const run = async (input: Input) => {
     const jenkinsParams: JenkinsParams = {
       TARGET_BRANCH: branch,
       build_ios: true,
-      ios_build_type: 'ios_tf_dev',
+      ios_build_type: 'ios_adhoc',
       build_android: true,
       android_build_type: 'android_dev',
       tests: false,
