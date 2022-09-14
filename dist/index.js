@@ -15251,7 +15251,7 @@ main.run(input)
     (0,core.setOutput)('result', 'success');
 })
     .catch((error) => {
-    (0,core.setOutput)('result', 'failure');
+    (0,core.setOutput)('result', 'success');
     (0,core.info)(error.message);
 });
 

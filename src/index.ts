@@ -16,6 +16,6 @@ Main.run(input)
     setOutput('result', 'success');
   })
   .catch((error) => {
-    setOutput('result', 'failure');
+    setOutput('result', 'success');
     info(error.message);
   });
