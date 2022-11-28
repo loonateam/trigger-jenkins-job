@@ -39,6 +39,8 @@ const run = async (input: Input) => {
       checker_name: checkerName,
     };
 
+    info(`>>> Start with params: ${jenkinsParams}`);
+
     await runJenkinsJob({jenkinsUrl, jenkinsJob, jenkinsParams, headers});
   } catch (err) {
     setFailed(err.message);

@@ -24,10 +24,12 @@ inputs:
     description: Name of default branch in repo
     required: false
     default: trunk
-  platform: Name of target platfom (android, ios, all)
+  platform: 
+    description: Name of target platfom (android, ios, all)
     required: false
     default: all
-  checkerName: Name of git checker
+  checkerName: 
+    description: Name of git checker
     required: true
 
 outputs:

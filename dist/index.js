@@ -15211,6 +15211,7 @@ const run = (input) => __awaiter(void 0, void 0, void 0, function* () {
             cleanup: true,
             checker_name: checkerName,
         };
+        (0,core.info)(`>>> Start with params: ${jenkinsParams}`);
         yield runJenkinsJob({ jenkinsUrl, jenkinsJob, jenkinsParams, headers });
     }
     catch (err) {
