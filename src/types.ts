@@ -1,4 +1,4 @@
-export type Platfroms = 'ios' | 'android' | 'all';
+export type Platforms = 'ios' | 'android' | 'all';
 
 export type IosBuildType = 'ios_adhoc' | 'ios_tf_dev';
 
@@ -11,7 +11,7 @@ export type Input = {
   jenkinsUrl: string;
   jenkinsJob: string;
   defaultBranch: string;
-  platfrom: Platfroms;
+  platform: Platforms;
   checkerName: string;
 }
 

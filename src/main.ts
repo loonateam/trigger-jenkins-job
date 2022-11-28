@@ -11,7 +11,7 @@ const run = async (input: Input) => {
     jenkinsToken,
     jenkinsJob,
     defaultBranch,
-    platfrom,
+    platform,
     checkerName,
   } = input;
 
@@ -23,9 +23,9 @@ const run = async (input: Input) => {
 
     const branch = context.payload.pull_request?.head?.ref ?? defaultBranch;
 
-    const buildAll = platfrom === 'all';
-    const buildIos = buildAll || platfrom === 'ios';
-    const buildAndroid = buildAll || platfrom === 'android';
+    const buildAll = platform === 'all';
+    const buildIos = buildAll || platform === 'ios';
+    const buildAndroid = buildAll || platform === 'android';
 
     const jenkinsParams: JenkinsParams = {
       TARGET_BRANCH: branch,
