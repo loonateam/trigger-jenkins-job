@@ -1,6 +1,6 @@
 import { getInput, setOutput, info } from '@actions/core';
 import Main from './main';
-import type { Input } from './types';
+import type { Input, Platfroms } from './types';
 
 const input: Input = {
   githubToken: getInput('githubToken'),
@@ -9,6 +9,8 @@ const input: Input = {
   jenkinsUrl: getInput('jenkinsUrl'),
   jenkinsJob: getInput('jenkinsJob'),
   defaultBranch: getInput('defaultBranch'),
+  platfrom: getInput('platfrom') as Platfroms,
+  checkerName: getInput('checkerName'),
 };
 
 Main.run(input)

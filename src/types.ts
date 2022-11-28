@@ -1,3 +1,5 @@
+export type Platfroms = 'ios' | 'android' | 'all';
+
 export type IosBuildType = 'ios_adhoc' | 'ios_tf_dev';
 
 export type AndroidBuildType = 'android_dev' | 'android_prod';
@@ -9,6 +11,8 @@ export type Input = {
   jenkinsUrl: string;
   jenkinsJob: string;
   defaultBranch: string;
+  platfrom: Platfroms;
+  checkerName: string;
 }
 
 export type JenkinsParams = {
@@ -20,6 +24,7 @@ export type JenkinsParams = {
   tests: boolean;
   update_translations: boolean;
   cleanup: boolean;
+  checker_name: string;
 };
 
 export type Headers = {

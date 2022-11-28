@@ -11,6 +11,8 @@ const run = async (input: Input) => {
     jenkinsToken,
     jenkinsJob,
     defaultBranch,
+    platfrom,
+    checkerName,
   } = input;
 
   try {
@@ -21,15 +23,20 @@ const run = async (input: Input) => {
 
     const branch = context.payload.pull_request?.head?.ref ?? defaultBranch;
 
+    const buildAll = platfrom === 'all';
+    const buildIos = buildAll || platfrom === 'ios';
+    const buildAndroid = buildAll || platfrom === 'android';
+
     const jenkinsParams: JenkinsParams = {
       TARGET_BRANCH: branch,
-      build_ios: true,
+      build_ios: buildIos,
       ios_build_type: 'ios_adhoc',
-      build_android: true,
+      build_android: buildAndroid,
       android_build_type: 'android_dev',
       tests: false,
       update_translations: false,
       cleanup: true,
+      checker_name: checkerName,
     };
 
     await runJenkinsJob({jenkinsUrl, jenkinsJob, jenkinsParams, headers});

@@ -15190,22 +15190,26 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 const run = (input) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
-    const { jenkinsUrl, jenkinsUser, jenkinsToken, jenkinsJob, defaultBranch, } = input;
+    const { jenkinsUrl, jenkinsUser, jenkinsToken, jenkinsJob, defaultBranch, platfrom, checkerName, } = input;
     try {
         const API_TOKEN = Buffer.from(`${jenkinsUser}:${jenkinsToken}`).toString('base64');
         const headers = {
             'Authorization': `Basic ${API_TOKEN}`
         };
         const branch = (_c = (_b = (_a = github.context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.head) === null || _b === void 0 ? void 0 : _b.ref) !== null && _c !== void 0 ? _c : defaultBranch;
+        const buildAll = platfrom === 'all';
+        const buildIos = buildAll || platfrom === 'ios';
+        const buildAndroid = buildAll || platfrom === 'android';
         const jenkinsParams = {
             TARGET_BRANCH: branch,
-            build_ios: true,
+            build_ios: buildIos,
             ios_build_type: 'ios_adhoc',
-            build_android: true,
+            build_android: buildAndroid,
             android_build_type: 'android_dev',
             tests: false,
             update_translations: false,
             cleanup: true,
+            checker_name: checkerName,
         };
         yield runJenkinsJob({ jenkinsUrl, jenkinsJob, jenkinsParams, headers });
     }
@@ -15245,6 +15249,8 @@ const input = {
     jenkinsUrl: (0,core.getInput)('jenkinsUrl'),
     jenkinsJob: (0,core.getInput)('jenkinsJob'),
     defaultBranch: (0,core.getInput)('defaultBranch'),
+    platfrom: (0,core.getInput)('platfrom'),
+    checkerName: (0,core.getInput)('checkerName'),
 };
 main.run(input)
     .then(() => {
